@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#121826">
+<title>Querida Hola</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100svh; display: grid; place-items: center;
+    padding: 24px; font-family: system-ui, -apple-system, Roboto, sans-serif;
+    color: #fff; background: radial-gradient(circle at top, #263b65 0%, #121826 58%, #0a0e16 100%);
+  }
+  main { width: min(100%, 480px); text-align: center; }
+  .orb { width: 76px; height: 76px; margin: 0 auto 28px; border-radius: 24px;
+    display: grid; place-items: center; font-size: 34px; background: #304b78;
+    box-shadow: 0 12px 40px #0005; animation: float 3s ease-in-out infinite; }
+  h1 { margin: 0; font-size: clamp(2rem, 8vw, 3rem); line-height: 1.18;
+    letter-spacing: -.04em; opacity: 0; transform: translateY(14px);
+    animation: appear 1.2s cubic-bezier(.2,.8,.2,1) .15s forwards; }
+  p { margin: 18px 0 34px; color: #c8d3e5; font-size: 1rem; opacity: 0;
+    animation: appear 1s ease .7s forwards; }
+  button { min-width: 148px; border: 0; border-radius: 14px; padding: 14px 24px;
+    color: #fff; background: #4267a8; font-size: 1rem; font-weight: 700;
+    box-shadow: 0 8px 24px #0004; cursor: pointer; }
+  button:active { transform: scale(.98); }
+  .note { margin-top: 22px; color: #8998b2; font-size: .8rem; }
+  @keyframes appear { to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="orb" aria-hidden="true">✦</div>
+  <h1>Querida, hola,<br>¡funcionan correctamente!</h1>
+  <p>Tu aplicación de prueba está funcionando.</p>
+  <button id="exit" type="button">Salir</button>
+  <div class="note">Versión web de prueba</div>
+</main>
+<script>
+document.getElementById('exit').addEventListener('click', function () {
+  // Los navegadores normalmente impiden que una página cierre una pestaña
+  // que el usuario abrió manualmente. Volvemos a una pantalla neutra.
+  document.body.innerHTML = '<main><h1>Hasta luego 👋</h1><p>Ya puedes cerrar esta pestaña.</p></main>';
+});
+</script>
+</body>
+</html>
